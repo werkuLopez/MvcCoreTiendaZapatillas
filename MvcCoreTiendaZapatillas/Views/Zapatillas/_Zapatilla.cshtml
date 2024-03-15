@@ -1,0 +1,53 @@
+﻿@model Zapatilla
+@{
+    ImagenesZapatilla imagen = ViewData["imagen"] as ImagenesZapatilla;
+    int numRegistros = (int)ViewData["ÚLTIMO"];
+    int actual = (int)ViewData["anterior"];
+}
+
+<ul class="list-group list-group-horizontal">
+    <li class="list-group-item">
+        <button onclick="loadZapatilla(1)" class="btn">
+            Primero
+        </button>
+    </li>
+    <li class="list-group-item">
+        <button onclick="loadZapatilla(@ViewData["ANTERIOR"])" class="btn">
+            Anterior
+        </button>
+    </li>
+    <li class="list-group-item">
+        <button onclick="loadZapatilla(@ViewData["SIGUIENTE"])" class="btn">
+            Siguiente
+        </button>
+    </li>
+    <li class="list-group-item">
+        <button onclick="loadZapatilla(@ViewData["ÚLTIMO"])" class="btn">
+            Último
+        </button>
+    </li>
+</ul>
+
+<h1>Imagen @actual de @numRegistros</h1>
+@if (Model != null)
+{
+
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h2>@Model.Nombre</h2>
+            </div>
+            <div class="card-body">
+                <p class="card-text">@Model.Descripcion</p>
+            </div>
+            <div class="card-footer">
+                <div class="card-img-top">
+                    @if (imagen != null)
+                    {
+                        <img src="@imagen.Imagen" width="100" height="100" alt="@Model.Nombre" />
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+}

@@ -1,0 +1,32 @@
+﻿@model List<Zapatilla>
+
+<form class="row gap-2" method="post">
+    <div class="col-md-6">
+        <select class="form-control" name="zapatilla">
+            @foreach (Zapatilla zapto in Model)
+            {
+                <option value="@zapto.IdProducto">@zapto.Nombre</option>
+            }
+        </select>
+    </div>
+    <div class="col-md-6">
+        <input name="imagenes" class="form-control" placeholder="agregue una imagen" />
+        <button class="btn btn-outline-primary">
+            asignar imagen
+        </button>
+    </div>
+</form>
+<button class="btn btn-secondary" id="nuevaImagen">
+    añadir otra imagen
+</button>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $("#nuevaImagen").click(function () {
+                let nuevoInput = $('<input>').attr("type", "text").attr("name", "imagenes").addClass("form-control");
+                $("form").append(nuevoInput);
+            })
+        })
+    </script>
+}

@@ -1,0 +1,19 @@
+﻿@model Zapatilla
+
+
+@section Scripts {
+    <script>
+        function loadZapatilla(posicion) {
+            $(function () {
+                $("#zapatosimagescontainer").load("/Zapatillas/_Zapatilla?posicion="
+                    + posicion + "&zapatilla=" + @Model.IdProducto);
+            });
+        }
+
+        loadZapatilla(1);
+    </script>
+}
+
+<div class="container -3" id="zapatosimagescontainer">
+
+</div>
